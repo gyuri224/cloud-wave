@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+- source: /
+    destination: /root/streamlit-project
+    runas: root
+file_exists_behavior: OVERWRITE
+hooks:
+ApplicationStop:
+    # - location: scripts/stop_streamlit.sh     #주석처리
+    - location: scripts/stop_applications.sh    #주석해제
+ApplicationStart:
+    # - location: scripts/start_streamlit.sh     #주석처리
+    - location: scripts/start_applications.sh    #주석해제
+ValidateService:
+  - location: scripts/finish_streamlit.sh
